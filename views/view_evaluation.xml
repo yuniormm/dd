@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="evaluation_view_form" model="ir.ui.view">
+            <field name="name">Evaluación</field>
+            <field name="model">gdu.evaluation</field>
+            <field name="arch" type="xml">
+                <form string="evaluation_form">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible=""/>
+                        <button name="calc_evaluation" type="object" string="Mildrey"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Evaluado" bg_color="bg-success" attrs="{'invisible': [('state', '!=', 'evaluado')]}"/>
+                        <center><h1>Evaluación laboral</h1></center>
+<!--                        <h4><group><field name="person_id" string="Nombre"/></group></h4>-->
+                        <group>
+                            <group string="">
+                                <field name="user_id" invisible="1"/>
+                                <field name="person_id" string="Nombre"/>
+                                <field name="type_person" string="Ocupación"/>
+                                <field name="area"/>
+                                <field name="departamento"/>
+                                <field name="teaching_category" attrs="{'invisible': [('type_person', '!=', 'profesor')]}"/>
+                                <field name="scientific_category" attrs="{'invisible': [('type_person', '!=', 'profesor')]}"/>
+                            </group>
+                            <group string="">
+                                <field name="period"/>
+                                <field name="evaluation_general"/>
+                            </group>
+
+                        </group>
+                        <notebook attrs="{'invisible': [('type_person', '!=', 'profesor')]}">
+                            <page name="pre" string="Formación de Pregrado">
+                                <center>
+                                    <h3>Formación de Pregrado</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="training_pre_eva"/>
+                                </group>
+                                <field name="training_pre"/>
+                            </page>
+                            <page name="post" string="Formación de Postgrado">
+                                <center>
+                                    <h3>Formación de Postgrado</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="training_post_eva"/>
+                                </group>
+                                <field name="training_post"/>
+                            </page>
+                            <page name="cti" string="Ciencia Tecnologia e Innovacion">
+                                <center>
+                                    <h3>Ciencia Tecnologia e Innovacion</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="cti_eva"/>
+                                </group>
+                                <field name="cti"/>
+                            </page>
+                            <page name="eu" string="Extensión Universitaria">
+                                <center>
+                                    <h3>Extensión Universitaria</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="extension_university_eva"/>
+                                </group>
+                                <field name="extension_university"/>
+                            </page>
+                            <page name="ici" string="Informatización. Comunicacion. Información">
+                                <center>
+                                    <h3>Informatización. Comunicacion. Información</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="computerization_eva"/>
+                                </group>
+                                <field name="computerization"/>
+                            </page>
+                            <page name="inter" string="Internacionalización">
+                                <center>
+                                    <h3>Internacionalización</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="international_eva"/>
+                                </group>
+                                <field name="international"/>
+                            </page>
+                            <page name="aseg" string="Aseguramiento Material y Financiero">
+                                <center>
+                                    <h3>Aseguramiento Material y Financiero</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="assurance_eva"/>
+                                </group>
+                                <field name="assurance"/>
+                            </page>
+                            <page name="rec" string="Recursos Humanos">
+                                <center>
+                                    <h3>Recursos Humanos</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="resources_human_eva"/>
+                                </group>
+                                <field name="resources_human"/>
+                            </page>
+                            <page name="ges" string="Gestión Institucional">
+                                <center>
+                                    <h3>Gestión Institucional</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="institutional_management_eva"/>
+                                </group>
+                                <field name="institutional_management"/>
+                            </page>
+                        </notebook>
+                        <notebook attrs="{'invisible': [('type_person', '=', 'profesor')]}">
+                            <page name="a" string="Recomendaciones Anteriores">
+                                <center>
+                                    <h3>Cumplimiento de las recomendaciones derivadas de la evaluación del desempeño anual anterior</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="a_eva"/>
+                                </group>
+                                <field name="a"/>
+                            </page>
+                            <page name="b" string="Funciones y tareas individuales">
+                                <center>
+                                    <h3>Cumplimiento de sus objetivos, funciones y tareas individuales, y la realización del trabajo con eficiencia, calidad y productividad requerida</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="b_eva"/>
+                                </group>
+                                <field name="b"/>
+                            </page>
+                            <page name="c" string="Aprovechamiento de la Jornada Laboral">
+                                <center>
+                                    <h3>Comportamiento de la disciplina y el aprovechamiento de la jornada de trabajo</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="c_eva"/>
+                                </group>
+                                <field name="c"/>
+                            </page>
+                            <page name="d" string="Seguridad y Salud">
+                                <center>
+                                    <h3>Cumplimiento de las normas de seguridad y salud en el trabajo</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="d_eva"/>
+                                </group>
+                                <field name="d"/>
+                            </page>
+                            <page name="e" string="Recursos Materiales">
+                                <center>
+                                    <h3>Uso y cuidado de los recursos materiales, fundamentalmente de los portadores energéticos, de los equipos y medios de protección personal</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="e_eva"/>
+                                </group>
+                                <field name="e"/>
+                            </page>
+                            <page name="f" string="Capacitacion Individual">
+                                <center>
+                                    <h3>Cumplimiento del plan de capacitación y desarrollo individual</h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="f_eva"/>
+                                </group>
+                                <field name="f"/>
+                            </page>
+                            <page name="g" string="Defensa y Seguridad">
+                                <center>
+                                    <h3>
+                                        Cumplimiento de las tareas vinculadas a la defensa y seguridad de la institución.
+                                    </h3>
+                                </center>
+                                <group name="group_left">
+                                    <field name="g_eva"/>
+                                </group>
+                                <field name="g"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="evaluation_view_tree" model="ir.ui.view">
+            <field name="name">Evaluacion</field>
+            <field name="model">gdu.evaluation</field>
+            <field name="arch" type="xml">
+                <tree string="evaluation_tree">
+                    <field name="person_id"/>
+                    <field name="type_person"/>
+                    <field name="area"/>
+                    <field name="period"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

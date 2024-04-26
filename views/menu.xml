@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="evaluation_action" model="ir.actions.act_window">
+            <field name="name">Evaluación</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">gdu.evaluation</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="category_evaluation_action" model="ir.actions.act_window">
+            <field name="name">Tipo Evaluación</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">gdu.category.evaluation</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="root_menu" name="Evaluación" sequence=""/>
+        <menuitem id="config_menu" name="Configuración" parent="root_menu" sequence="60"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="evaluation_menu" name="Evaluación" parent="root_menu" action="evaluation_action" sequence=""/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="category_evaluation_menu" name="Tipo Evaluación" parent="config_menu" action="category_evaluation_action" sequence=""/>
+
+    </data>
+</odoo>
